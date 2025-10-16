@@ -1,0 +1,55 @@
+<div class="container-personagem">
+    <h2 style="font-weight: bold;">Cadastro de Personagens</h2>
+    <div class="form">
+
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" [(ngModel)]="novoPersonagem.nome">
+            @if (novoPersonagem.nome) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.nome=''">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Raça</mat-label>
+            <select matNativeControl [(ngModel)]="novoPersonagem.raca">
+                <option [value]="r" *ngFor="let r of racas">{{r}}</option>
+            </select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nível</mat-label>
+            <input matInput type="number" [(ngModel)]="novoPersonagem.nivel">
+            @if (novoPersonagem.nivel) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.nivel=0">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Cor de Fundo</mat-label>
+            <input matInput type="color" [(ngModel)]="novoPersonagem.corFundo">
+            @if (novoPersonagem.corFundo) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.corFundo=''">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Imagem URL</mat-label>
+            <input matInput type="text" [(ngModel)]="novoPersonagem.imagemUrl">
+            @if (novoPersonagem.imagemUrl) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.imagemUrl=''">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+    </div>
+
+    <button (click)="salvarPersonagem()">Salvar</button>
+
+    <h2 style="font-weight: bold;">Personagens Cadastrados</h2>
+    <div class="lista" *ngIf="personagens.length > 0">
+        <app-card-personagem *ngFor="let personagem of personagens;" [personagem]="personagem" />
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container-item">
+    <h2 style="font-weight: bold;">Cadastro de Itens Mágicos</h2>
+    <div class="form">
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" [(ngModel)]="novoItem.nome">
+            @if (novoItem.nome) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoItem.nome=''">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <select matNativeControl [(ngModel)]="novoItem.tipo">
+                <option [value]="t" *ngFor="let t of tipos">{{t}}</option>
+            </select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Poder</mat-label>
+            <input matInput type="number" [(ngModel)]="novoItem.poder">
+            @if (novoItem.poder) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoItem.poder=0">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Imagem URL</mat-label>
+            <input matInput type="text" [(ngModel)]="novoItem.imagemUrl">
+            @if (novoItem.imagemUrl) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoItem.imagemUrl=''">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+    </div>
+
+    <button (click)="salvarItem()">Salvar</button>
+
+    <h2 style="font-weight: bold;">Itens Cadastrados</h2>
+    <div class="lista" *ngIf="itens.length > 0">
+        <app-card-item-magico *ngFor="let item of itens;" [item]="item" />
+    </div>
+</div>
