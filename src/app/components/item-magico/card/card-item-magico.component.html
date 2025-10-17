@@ -1,0 +1,13 @@
+<div class="card-item">
+    <h3 class="nome">{{ item.nome }}</h3>
+    <img class="img" [src]="item.imagemUrl" alt="{{ item.nome }}" />
+    <p class="tipo">Tipo: {{ item.tipo }}</p>
+    <p class="poder">Poder: {{ item.poder }}</p>
+
+    <div class="actions">
+        <button class="btnAtualizar" (click)="openDialog()">Atualizar</button>
+        <button class="btnExcluir" (click)="excluirItem()" title="Excluir Item">
+            <lucide-icon name="trash-2"></lucide-icon>
+        </button>
+    </div>
+</div>

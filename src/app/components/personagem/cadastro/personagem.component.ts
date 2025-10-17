@@ -7,8 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Personagem } from '../../models/personagem.model';
-import { CardPersonagemComponent } from "../card-personagem/card-personagem.component";
+import { Personagem } from '../../../models/personagem.model';
+import { CardPersonagemComponent } from "../card/card-personagem.component";
+import { PersonagemService } from '../../../services/personagem/personagem.service';
 
 @Component({
   selector: 'app-personagem',
@@ -28,8 +29,31 @@ export class PersonagemComponent {
     imagemUrl: ''
   }
 
-  personagens: Personagem[] = [];
   racas = ['Humano', 'Elfo', 'Anão', 'Orc', 'Goblin', 'Troll'];
+  personagens: Personagem[] = [];
+  carregando: boolean = true;
+  erro: string | null = null;
+
+  constructor(private service: PersonagemService) { }
+
+  ngOnInit(): void {
+    this.buscarPersonagens()
+  }
+
+  buscarPersonagens() {
+    this.service.listar().subscribe(
+      {
+        next: (dados) => {
+          this.personagens = dados
+          this.carregando = false
+        },
+        error: (err) => {
+          this.erro = err.message,
+            this.carregando = false
+        }
+      },
+    )
+  }
 
   salvarPersonagem() {
     if (this.novoPersonagem.nome

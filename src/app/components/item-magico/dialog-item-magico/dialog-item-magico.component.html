@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>EDITAR ITEM</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" [(ngModel)]="data.nome">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <select matNativeControl [(ngModel)]="data.tipo">
+            <option [value]="t" *ngFor="let t of tipos">{{t}}</option>
+        </select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Poder</mat-label>
+        <input matInput type="number" [(ngModel)]="data.poder">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Imagem URL</mat-label>
+        <input matInput type="text" [(ngModel)]="data.imagemUrl">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="btnCancel" (click)="onCancelarClick()">Cancelar</button>
+    <button class="btnConfirm" (click)="onConfirmarClick()">Confirmar</button>
+</mat-dialog-actions>

@@ -1,0 +1,30 @@
+:host ::ng-deep h2[mat-dialog-title] {
+    font-weight: bold;
+    text-align: center;
+}
+
+:host ::ng-deep mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+:host ::ng-deep mat-form-field {
+    width: 100%;
+}
+
+:host ::ng-deep mat-dialog-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .btnCancel {
+    background-color: #f44336;
+    color: white;
+}
+
+:host ::ng-deep .btnCancel:hover {
+    background-color: #d32f2f;
+}

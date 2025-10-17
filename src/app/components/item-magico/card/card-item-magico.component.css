@@ -40,5 +40,27 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    display: flex;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnAtualizar {
+    background-color: #52c956;
+    padding: 0px 50px;
+}
+
+.btnAtualizar:hover {
+    background-color: #4caf50;
+}
+
+.btnExcluir {
+    background-color: #f44336;
+}
+
+.btnExcluir:hover {
+    background-color: #d43c31;
 }

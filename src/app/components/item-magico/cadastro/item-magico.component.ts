@@ -7,8 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { ItemMagico } from '../../models/item-magico.model';
-import { CardItemMagicoComponent } from "../card-item-magico/card-item-magico.component";
+import { ItemMagico } from '../../../models/item-magico.model';
+import { CardItemMagicoComponent } from "../card/card-item-magico.component";
+import { ItemMagicoService } from '../../../services/item-magico/item-magico.service';
 
 @Component({
   selector: 'app-item-magico',
@@ -29,6 +30,29 @@ export class ItemMagicoComponent {
 
   tipos = ['Arma', 'Armadura', 'Poção', 'Anel', 'Amuleto', 'Pergaminho'];
   itens: ItemMagico[] = [];
+  carregando: boolean = true;
+  erro: string | null = null;
+
+  constructor(private service: ItemMagicoService) { }
+
+  ngOnInit(): void {
+    this.buscarItens()
+  }
+
+  buscarItens() {
+    this.service.listar().subscribe(
+      {
+        next: (dados) => {
+          this.itens = dados
+          this.carregando = false
+        },
+        error: (err) => {
+          this.erro = err.message,
+            this.carregando = false
+        }
+      },
+    )
+  }
 
   salvarItem() {
     if (this.novoItem.nome

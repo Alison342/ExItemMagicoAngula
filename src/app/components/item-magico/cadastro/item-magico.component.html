@@ -43,6 +43,6 @@
 
     <h2 style="font-weight: bold;">Itens Cadastrados</h2>
     <div class="lista" *ngIf="itens.length > 0">
-        <app-card-item-magico *ngFor="let item of itens;" [item]="item" />
+        <app-card-item-magico *ngFor="let item of itens;" [item]="item" (itemExcluido)="buscarItens()" />
     </div>
 </div>

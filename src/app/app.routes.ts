@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { PersonagemComponent } from './components/personagem/personagem.component';
-import { ItemMagicoComponent } from './components/item-magico/item-magico.component';
+import { PersonagemComponent } from './components/personagem/cadastro/personagem.component';
+import { ItemMagicoComponent } from './components/item-magico/cadastro/item-magico.component';
 
 export const routes: Routes = [
     {

@@ -1,0 +1,142 @@
+{
+  "itensMagicos": [
+    {
+      "id": "1",
+      "nome": "Espada Flamejante 101",
+      "tipo": "Arma",
+      "poder": 71,
+      "imagemUrl": "https://img.freepik.com/fotos-premium/elfo-fantasia-com-cabelos-vermelhos-e-cajado-magico_983420-28086.jpg"
+    },
+    {
+      "id": "2",
+      "nome": "Bracelete BR",
+      "tipo": "Amuleto",
+      "poder": 10000,
+      "imagemUrl": "data:image/jpeg;base64,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"
+    },
+    {
+      "id": "3",
+      "nome": "Cajado do Vento",
+      "tipo": "Arma",
+      "poder": 70,
+      "imagemUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStspvupFf6usW3SV5DVfV4YwvXrM1b38eE7A&s"
+    },
+    {
+      "id": "4",
+      "nome": "Botas da Velocidade",
+      "tipo": "Armadura",
+      "poder": 30,
+      "imagemUrl": "https://i.pinimg.com/originals/1c/87/ba/1c87bae7ab5944105d9576359f87d547.jpg"
+    },
+    {
+      "id": "5",
+      "nome": "Anel da Invisibilidade",
+      "tipo": "Anel",
+      "poder": 60,
+      "imagemUrl": "https://i.pinimg.com/736x/1b/53/4b/1b534b89b6f7b610a694234282b45e2a.jpg"
+    },
+    {
+      "id": "6",
+      "nome": "Escudo de Cristal",
+      "tipo": "Armadura",
+      "poder": 75,
+      "imagemUrl": "https://img.freepik.com/fotos-premium/escudo-cristal_839169-6251.jpg"
+    },
+    {
+      "id": "7",
+      "nome": "Poção de Cura",
+      "tipo": "Poção",
+      "poder": 25,
+      "imagemUrl": "https://i.pinimg.com/originals/ad/49/5b/ad495b0d60b8c2809e73bd2e0095c547.png"
+    },
+    {
+      "id": "8",
+      "nome": "Elmo do Dragão",
+      "tipo": "Armadura",
+      "poder": 65,
+      "imagemUrl": "https://imagensblogs.nyc3.digitaloceanspaces.com/fantasiasdefesta/2023/09/07155401/elmo-samurai-dragao-ouro.webp"
+    }
+  ],
+  "personagens": [
+    {
+      "id": "1",
+      "nome": "Arthos",
+      "raca": "Humano",
+      "nivel": 12,
+      "corFundo": "#FFD700",
+      "imagemUrl": "https://i.pinimg.com/1200x/e2/37/8b/e2378bd6da13c7e45a4826b162ff0f56.jpg"
+    },
+    {
+      "id": "2",
+      "nome": "Lunara",
+      "raca": "Elfa",
+      "nivel": 15,
+      "corFundo": "#ADFF2F",
+      "imagemUrl": "https://i.redd.it/daily-hero-discussion-day-17-lunara-v0-yp2jujd0vrpf1.jpg?width=411&format=pjpg&auto=webp&s=5eefd0a693a3dc064c902854b80b0fb41cb37593"
+    },
+    {
+      "id": "3",
+      "nome": "Thorg",
+      "raca": "Orc",
+      "nivel": 10,
+      "corFundo": "#FF4500",
+      "imagemUrl": "https://static.wikia.nocookie.net/wowpedia/images/6/6c/General_Thorg%27izog.jpg/revision/latest?cb=20160122170257"
+    },
+    {
+      "id": "4",
+      "nome": "Mirael",
+      "raca": "Fada",
+      "nivel": 18,
+      "corFundo": "#DA70D6",
+      "imagemUrl": "https://img.freepik.com/fotos-premium/bela-habitante-da-floresta-personagem-mitica-de-contos-de-fadas-e-fantasia-ninfa-fada-naiad-generative-ai_272595-4128.jpg?w=2000"
+    },
+    {
+      "id": "5",
+      "nome": "Drax",
+      "raca": "Draconato",
+      "nivel": 20,
+      "corFundo": "#1E90FF",
+      "imagemUrl": "https://i.pinimg.com/originals/f3/0f/a3/f30fa3c1618aa720d70a2897aa4d28f7.png"
+    },
+    {
+      "id": "6",
+      "nome": "Zara",
+      "raca": "Humana",
+      "nivel": 14,
+      "corFundo": "#FF69B4",
+      "imagemUrl": "https://img.freepik.com/fotos-premium/personagem-3d-feminina-humana-horario-de-areia-escuro-segurando-um-bastao-mago-amuleto-wavy-jogo-asset-design-arte_655090-1252949.jpg"
+    },
+    {
+      "id": "7",
+      "nome": "Grom",
+      "raca": "Anão",
+      "nivel": 11,
+      "corFundo": "#A52A2A",
+      "imagemUrl": "https://i.redd.it/grom-the-paunch-wip-v0-216gdyq202qe1.jpg?width=1570&format=pjpg&auto=webp&s=b75de34afefdb0d347211574ddf62f65106b6dd3"
+    },
+    {
+      "id": "8",
+      "nome": "Sylvar",
+      "raca": "Elfo",
+      "nivel": 16,
+      "corFundo": "#32CD32",
+      "imagemUrl": "https://cdn.pixabay.com/photo/2022/10/05/09/19/elves-7500350_1280.jpg"
+    },
+    {
+      "id": "9",
+      "nome": "Nym",
+      "raca": "Gnomo",
+      "nivel": 9,
+      "corFundo": "#8A2BE2",
+      "imagemUrl": "https://img.freepik.com/fotos-premium/um-desenho-animado-de-um-gnomo-fantasia-gnomo-bonito-3d-desenho-animato-gnomo-isolado-fundo-branco-gnomo-de-primavera_1135385-10322.jpg"
+    },
+    {
+      "id": "10",
+      "nome": "Kael",
+      "raca": "Humano",
+      "nivel": 13,
+      "corFundo": "#00CED1",
+      "imagemUrl": "https://i.pinimg.com/236x/e0/cb/1f/e0cb1f2e2cda8bc013337bf72433dcd2.jpg"
+    }
+  ]
+}
