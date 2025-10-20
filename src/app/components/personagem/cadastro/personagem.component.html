@@ -1,55 +1,91 @@
-<div class="container-personagem">
-    <h2 style="font-weight: bold;">Cadastro de Personagens</h2>
-    <div class="form">
+<div class="flex flex-col items-center">
+  <span
+    class="font-serif text-3xl p-4 bg-slate-800 m-6 w-full text-center shadow-lg text-slate-100"
+    >Cadastro de Personagens</span
+  >
+  <div class="flex flex-col w-full max-w-md gap-2">
+    <mat-form-field>
+      <mat-label class="font-serif">Nome</mat-label>
+      <input matInput type="text" [(ngModel)]="novoPersonagem.nome" />
+      @if (novoPersonagem.nome) {
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="novoPersonagem.nome = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="font-serif">Raça</mat-label>
+      <select matNativeControl [(ngModel)]="novoPersonagem.raca">
+        <option [value]="r" *ngFor="let r of racas">{{ r }}</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="font-serif">Nível</mat-label>
+      <input matInput type="number" [(ngModel)]="novoPersonagem.nivel" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="font-serif">Imagem URL</mat-label>
+      <input matInput type="text" [(ngModel)]="novoPersonagem.imagemUrl" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="font-serif">Cor Card </mat-label>
+      <input matInput type="color" [(ngModel)]="novoPersonagem.corFundo" />
+    </mat-form-field>
+  </div>
 
-        <mat-form-field>
-            <mat-label>Nome</mat-label>
-            <input matInput type="text" [(ngModel)]="novoPersonagem.nome">
-            @if (novoPersonagem.nome) {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.nome=''">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Raça</mat-label>
-            <select matNativeControl [(ngModel)]="novoPersonagem.raca">
-                <option [value]="r" *ngFor="let r of racas">{{r}}</option>
-            </select>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Nível</mat-label>
-            <input matInput type="number" [(ngModel)]="novoPersonagem.nivel">
-            @if (novoPersonagem.nivel) {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.nivel=0">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Cor de Fundo</mat-label>
-            <input matInput type="color" [(ngModel)]="novoPersonagem.corFundo">
-            @if (novoPersonagem.corFundo) {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.corFundo=''">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Imagem URL</mat-label>
-            <input matInput type="text" [(ngModel)]="novoPersonagem.imagemUrl">
-            @if (novoPersonagem.imagemUrl) {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoPersonagem.imagemUrl=''">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
+  <button
+    class="bg-cyan-600 rounded-lg p-2 w-32 font-serif hover:bg-cyan-700 text-slate-100"
+    (click)="salvarPersonagem()"
+  >
+    SALVAR
+  </button>
+
+  <span
+    class="font-serif text-3xl p-4 bg-slate-800 m-6 w-full text-center shadow-lg text-slate-100 text-shadow"
+    >Personagens Cadastrados</span
+  >
+
+  <div class="w-full flex flex-col items-center">
+    <mat-form-field class="w-full max-w-md">
+      <mat-label class="font-serif">Buscar por Nome</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="filtroNome"
+        placeholder="Digite o nome..."
+      />
+      @if (filtroNome) {
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="filtroNome = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+
+    <div
+      class="flex flex-wrap justify-center gap-4"
+      *ngIf="personagensFiltrados().length > 0; else semPersonagens"
+    >
+      <app-card-personagem
+        *ngFor="let pers of personagensFiltrados()"
+        [personagem]="pers"
+        (personagemExcluido)="buscarPersonagens()"
+      />
     </div>
 
-    <button (click)="salvarPersonagem()">Salvar</button>
-
-    <h2 style="font-weight: bold;">Personagens Cadastrados</h2>
-    <div class="lista" *ngIf="personagens.length > 0">
-        <app-card-personagem *ngFor="let personagem of personagens;" [personagem]="personagem" />
-    </div>
+    <ng-template #semPersonagens>
+      <p class="text-slate-400 mt-4 font-serif text-center italic">
+        Nenhum personagem encontrado.
+      </p>
+    </ng-template>
+  </div>
 </div>

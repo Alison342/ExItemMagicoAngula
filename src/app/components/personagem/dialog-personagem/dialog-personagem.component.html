@@ -8,15 +8,20 @@
   </mat-form-field>
   <br />
   <mat-form-field>
-    <mat-label>Tipo</mat-label>
-    <select matNativeControl [(ngModel)]="data.tipo">
-      <option [value]="t" *ngFor="let t of tipos">{{ t }}</option>
+    <mat-label>Raça</mat-label>
+    <select matNativeControl [(ngModel)]="data.raca">
+      <option [value]="r" *ngFor="let r of racas">{{ r }}</option>
     </select>
   </mat-form-field>
   <br />
   <mat-form-field>
-    <mat-label>Poder</mat-label>
-    <input matInput type="number" [(ngModel)]="data.poder" />
+    <mat-label>Nível</mat-label>
+    <input matInput type="number" [(ngModel)]="data.nivel" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label class="font-serif">Cor Card </mat-label>
+    <input matInput type="color" [(ngModel)]="data.corFundo" />
   </mat-form-field>
   <br />
   <mat-form-field>

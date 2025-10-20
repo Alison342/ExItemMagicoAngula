@@ -16,15 +16,16 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-interface DialogDataItemMagico {
+interface DialogDataPersonagem {
   nome: string;
-  tipo: string;
-  poder: number;
+  raca: string;
+  nivel: number;
+  corFundo: string;
   imagemUrl: string;
 }
 
 @Component({
-  selector: 'app-dialog-item-magico',
+  selector: 'app-dialog-personagem',
   standalone: true,
   imports: [
     FormsModule,
@@ -39,20 +40,20 @@ interface DialogDataItemMagico {
     MatDialogContent,
     MatDialogActions,
   ],
-  templateUrl: './dialog-item-magico.component.html',
-  styleUrl: './dialog-item-magico.component.scss',
+  templateUrl: './dialog-personagem.component.html',
+  styleUrl: './dialog-personagem.component.scss',
 })
-export class DialogItemMagicoComponent {
+export class DialogPersonagemComponent {
   constructor() {}
-  readonly dialogRef = inject(MatDialogRef<DialogItemMagicoComponent>);
-  readonly data = inject<DialogDataItemMagico>(MAT_DIALOG_DATA);
-  tipos = ['Arma', 'Armadura', 'Poção', 'Anel', 'Amuleto', 'Pergaminho'];
-
-  onCancelarClick(): void {
-    this.dialogRef.close();
-  }
+  readonly dialogRef = inject(MatDialogRef<DialogPersonagemComponent>);
+  readonly data = inject<DialogDataPersonagem>(MAT_DIALOG_DATA);
+  racas = ['Humano', 'Elfo', 'Anão', 'Orc', 'Goblin', 'Troll'];
 
   onConfirmarClick(): void {
     this.dialogRef.close(this.data);
+  }
+
+  onCancelarClick(): void {
+    this.dialogRef.close();
   }
 }

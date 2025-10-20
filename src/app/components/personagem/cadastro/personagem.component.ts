@@ -8,69 +8,103 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Personagem } from '../../../models/personagem.model';
-import { CardPersonagemComponent } from "../card/card-personagem.component";
+import { CardPersonagemComponent } from '../card/card-personagem.component';
 import { PersonagemService } from '../../../services/personagem/personagem.service';
 
 @Component({
   selector: 'app-personagem',
   standalone: true,
-  imports: [FormsModule, CommonModule, CardPersonagemComponent, MatInputModule, MatIconModule,
-    MatButtonModule, MatFormFieldModule, MatDividerModule, MatSelectModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    CardPersonagemComponent,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatSelectModule,
+  ],
   templateUrl: './personagem.component.html',
-  styleUrl: './personagem.component.css'
+  styleUrl: './personagem.component.css',
 })
 export class PersonagemComponent {
   novoPersonagem = {
-    id: 0,
+    id: '',
     nome: '',
     raca: '',
     nivel: 0,
     corFundo: '',
-    imagemUrl: ''
-  }
+    imagemUrl: '',
+  };
 
   racas = ['Humano', 'Elfo', 'Anão', 'Orc', 'Goblin', 'Troll'];
   personagens: Personagem[] = [];
   carregando: boolean = true;
   erro: string | null = null;
+  filtroNome: string = '';
 
-  constructor(private service: PersonagemService) { }
+  constructor(private service: PersonagemService) {}
 
   ngOnInit(): void {
-    this.buscarPersonagens()
+    this.buscarPersonagens();
   }
 
   buscarPersonagens() {
-    this.service.listar().subscribe(
-      {
-        next: (dados) => {
-          this.personagens = dados
-          this.carregando = false
-        },
-        error: (err) => {
-          this.erro = err.message,
-            this.carregando = false
-        }
+    this.service.listar().subscribe({
+      next: (dados) => {
+        this.personagens = dados;
+        this.carregando = false;
       },
-    )
+      error: (err) => {
+        (this.erro = err.message), (this.carregando = false);
+      },
+    });
   }
 
   salvarPersonagem() {
-    if (this.novoPersonagem.nome
-      && this.novoPersonagem.raca
-      && this.novoPersonagem.nivel
-      && this.novoPersonagem.imagemUrl) {
+    if (
+      this.novoPersonagem.nome &&
+      this.novoPersonagem.raca &&
+      this.novoPersonagem.nivel &&
+      this.novoPersonagem.imagemUrl
+    ) {
+      const novoId =
+        this.personagens.length > 0
+          ? Math.max(
+              ...this.personagens.map((item) => Number.parseInt(item.id))
+            ) + 1
+          : 1;
 
-      const novoId = this.personagens.length > 0
-        ? Math.max(...this.personagens.map(item => item.id)) + 1
-        : 1;
+      const personagemToAdd = { ...this.novoPersonagem, id: novoId.toString() };
 
-      const personagemToAdd = { ...this.novoPersonagem, id: novoId };
-      this.personagens.push(personagemToAdd);
+      this.service.salvar(personagemToAdd).subscribe({
+        next: () => {
+          this.buscarPersonagens();
+        },
+        error: (err) => {
+          (this.erro = err.message), (this.carregando = false);
+        },
+      });
 
-      this.novoPersonagem = { id: 0, nome: '', raca: '', nivel: 0, corFundo: '', imagemUrl: '' };
+      this.novoPersonagem = {
+        id: '',
+        nome: '',
+        raca: '',
+        nivel: 0,
+        corFundo: '',
+        imagemUrl: '',
+      };
     } else {
       alert('Por favor, preencha todos os campos antes de adicionar o item.');
     }
+  }
+
+  personagensFiltrados(): Personagem[] {
+    if (!this.filtroNome) return this.personagens;
+    const nomeLower = this.filtroNome.toLowerCase();
+    return this.personagens.filter((personagem) =>
+      personagem.nome.toLowerCase().includes(nomeLower)
+    );
   }
 }

@@ -1,12 +1,25 @@
-<div class="container-home">
-  <h1>BEM-VINDO A DUNGEON!</h1>
-  
-  <nav>
-    <a routerLink="/personagem" routerLinkActive="active">Personagens</a>
-    <a routerLink="/item-magico" routerLinkActive="active">Itens Mágicos</a>
+<div class="bg-slate-900">
+  <div
+    class="text-neutral-200 flex justify-center pt-10 pb-2 font-serif font-bold text-4xl tracking-widest"
+  >
+    DUNGEONS WITHOUT DRAGONS
+  </div>
+  <nav
+    class="text-xl text-cyan-500 font-bold flex gap-4 justify-center p-4 font-serif"
+  >
+    <a
+      class="hover:underline"
+      routerLink="/personagem"
+      routerLinkActive="active"
+      >Personagens</a
+    >
+    <a
+      class="hover:underline"
+      routerLink="/item-magico"
+      routerLinkActive="active"
+      >Itens Mágicos</a
+    >
   </nav>
-
-  <mat-divider />
-
+  <mat-divider class="p-2" />
   <router-outlet />
 </div>

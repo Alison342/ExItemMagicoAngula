@@ -1,48 +1,97 @@
-<div class="container-item">
-    <h2 style="font-weight: bold;">Cadastro de Itens Mágicos</h2>
-    <div class="form">
-        <mat-form-field>
-            <mat-label>Nome</mat-label>
-            <input matInput type="text" [(ngModel)]="novoItem.nome">
-            @if (novoItem.nome) {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoItem.nome=''">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Tipo</mat-label>
-            <select matNativeControl [(ngModel)]="novoItem.tipo">
-                <option [value]="t" *ngFor="let t of tipos">{{t}}</option>
-            </select>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Poder</mat-label>
-            <input matInput type="number" [(ngModel)]="novoItem.poder">
-            @if (novoItem.poder) {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoItem.poder=0">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Imagem URL</mat-label>
-            <input matInput type="text" [(ngModel)]="novoItem.imagemUrl">
-            @if (novoItem.imagemUrl) {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="novoItem.imagemUrl=''">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
+<div class="flex flex-col items-center min-h-screen">
+  <span
+    class="font-serif text-3xl p-4 bg-slate-800 m-6 w-full text-center shadow-lg text-slate-100"
+    >Cadastro de Itens Mágicos</span
+  >
+  <div class="flex flex-col w-full max-w-md gap-2">
+    <mat-form-field>
+      <mat-label class="font-serif">Nome</mat-label>
+      <input matInput type="text" [(ngModel)]="novoItem.nome" />
+      @if (novoItem.nome) {
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="novoItem.nome = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="font-serif">Tipo</mat-label>
+      <select matNativeControl [(ngModel)]="novoItem.tipo">
+        <option [value]="t" *ngFor="let t of tipos">{{ t }}</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="font-serif">Poder</mat-label>
+      <input matInput type="number" [(ngModel)]="novoItem.poder" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="font-serif">Imagem URL</mat-label>
+      <input matInput type="text" [(ngModel)]="novoItem.imagemUrl" />
+      @if (novoItem.imagemUrl) {
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="novoItem.imagemUrl = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  </div>
+
+  <button
+    class="bg-cyan-600 rounded-lg p-2 w-32 font-serif hover:bg-cyan-700 text-slate-100"
+    (click)="salvarItem()"
+  >
+    SALVAR
+  </button>
+
+  <span
+    class="font-serif text-3xl p-4 bg-slate-800 m-6 w-full text-center shadow-lg text-slate-100 text-shadow"
+    >Itens Cadastrados</span
+  >
+
+  <div class="w-full flex flex-col items-center">
+    <mat-form-field class="w-full max-w-md">
+      <mat-label class="font-serif">Buscar por Nome</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="filtroNome"
+        placeholder="Digite o nome..."
+      />
+      @if (filtroNome) {
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="filtroNome = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+
+    <div
+      *ngIf="itensFiltrados().length > 0; else semItens"
+      class="flex flex-wrap justify-center gap-4"
+    >
+      <app-card-item-magico
+        *ngFor="let item of itensFiltrados()"
+        [item]="item"
+        (itemExcluido)="buscarItens()"
+      />
     </div>
 
-    <button (click)="salvarItem()">Salvar</button>
-
-    <h2 style="font-weight: bold;">Itens Cadastrados</h2>
-    <div class="lista" *ngIf="itens.length > 0">
-        <app-card-item-magico *ngFor="let item of itens;" [item]="item" (itemExcluido)="buscarItens()" />
-    </div>
+    <ng-template #semItens>
+      <p class="text-slate-400 mt-4 font-serif text-center italic">
+        Nenhum item encontrado.
+      </p>
+    </ng-template>
+  </div>
 </div>

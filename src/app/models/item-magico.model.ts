@@ -1,7 +1,7 @@
 export interface ItemMagico {
-    id: number;
-    nome: string;
-    tipo: string;
-    poder: number
-    imagemUrl: string;
+  id: string;
+  nome: string;
+  tipo: string;
+  poder: number;
+  imagemUrl: string;
 }
