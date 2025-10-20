@@ -10,7 +10,7 @@ import { ItemMagico } from '../../../models/item-magico.model';
 import { ItemMagicoService } from '../../../services/item-magico/item-magico.service';
 import { DialogItemMagicoComponent } from '../dialog-item-magico/dialog-item-magico.component';
 import { LucideAngularModule } from 'lucide-angular';
-import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
+import { DialogConfirmComponent } from '../../ui/dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-card-item-magico',

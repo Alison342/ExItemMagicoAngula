@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LucideAngularModule } from 'lucide-angular';
-import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
+import { DialogConfirmComponent } from '../../ui/dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-card-personagem',
